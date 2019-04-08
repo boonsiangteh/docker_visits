@@ -1,0 +1,11 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  node-app:
+    build: . #this means find a Dockerfile within current dir and use it to build node-app service
+    ports:
+      - "4001:8082" # map 4001 from local machine to 8081 on container
+
+# note that there is no need to set up networking between node-app and redis-server because docker-compose takes care
+# of that for us since we created both services using a single docker-compose file
